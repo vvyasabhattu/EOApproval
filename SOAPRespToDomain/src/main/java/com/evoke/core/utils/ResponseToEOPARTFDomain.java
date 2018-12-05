@@ -87,7 +87,6 @@ public class ResponseToEOPARTFDomain {
 		if (eoPARTFBeanList != null && eoPARTFBeanList.size() > 0) {
 			logger.info("EOPARTFBeanList : " + eoPARTFBeanList.size());
 			for (EOPARTFBean eoPARTFBean : eoPARTFBeanList) {
-
 				EOPARTF eoPARTF = new EOPARTF();
 				eoPARTF.setEOCNUM(eoPARTFBean.getKey().getControlNumber());
 				eoPARTF.setEODESC(eoPARTFBean.getEODESC());
