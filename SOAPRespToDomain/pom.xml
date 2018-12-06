@@ -3,10 +3,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.evoke.core.utils</groupId>
-	<artifactId>ResponseToEOPARTF</artifactId>
+	<artifactId>ResponseToDomain</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>ResponseToEOPARTF</name>
+	<name>ResponseToDomain</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -35,7 +35,7 @@
 			<version>2.53.1</version>
 			<scope>system</scope>
 			<systemPath>
- 		      C:/Users/gpamu/Downloads/bdm-client-pojo.jar
+ 		  C:\Users\gpamu\Downloads\bdm-client-pojo (1).jar
     		</systemPath>
 		</dependency>
 
@@ -50,7 +50,7 @@
 
 
 	<build>
-		<finalName>ResponseToEOPARTF</finalName>
+		<finalName>ResponseToDomain</finalName>
 		<plugins>
 
 			<!-- download source code in Eclipse, best practice -->
@@ -86,7 +86,7 @@
 					<archive>
 						<manifest>
 							<addClasspath>true</addClasspath>
-							<mainClass>com.evoke.core.utils.ResponseToEOPARTF</mainClass>
+							<mainClass>com.evoke.core.utils.ResponseToDomain</mainClass>
 							<classpathPrefix>dependency-jars/</classpathPrefix>
 						</manifest>
 					</archive>

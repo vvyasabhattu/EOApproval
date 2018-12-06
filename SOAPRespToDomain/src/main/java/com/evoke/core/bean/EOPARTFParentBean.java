@@ -1,4 +1,4 @@
-package com.evoke.core.utils;
+package com.evoke.core.bean;
 
 import java.util.List;
 

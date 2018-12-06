@@ -12,6 +12,17 @@ public class Key {
 	
 	@XmlElement(name = "ControlNumber", namespace = "http://schemas.datacontract.org/2004/07/EOApprovalProcess.Core.Server.Wcf.Models")
 	private String ControlNumber;
+	
+	@XmlElement(name = "Index", namespace = "http://schemas.datacontract.org/2004/07/EOApprovalProcess.Core.Server.Wcf.Models")
+	private String index;
+
+	public String getIndex() {
+		return index;
+	}
+
+	public void setIndex(String index) {
+		this.index = index;
+	}
 
 	public String getControlNumber() {
 		return ControlNumber;
