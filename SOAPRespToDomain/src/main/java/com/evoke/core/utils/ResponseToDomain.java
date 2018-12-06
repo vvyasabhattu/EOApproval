@@ -35,43 +35,6 @@ public class ResponseToDomain {
 
 	private static final Logger logger = Logger.getLogger(ResponseToDomain.class);
 
-	public static String response = "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n" + "\r\n"
-			+ "  <s:Header />\r\n" + "\r\n" + "  <s:Body>\r\n" + "\r\n"
-			+ "    <GetRoutingsResponse xmlns=\"http://tempuri.org/\">\r\n" + "\r\n"
-			+ "      <GetRoutingsResult xmlns:a=\"http://schemas.datacontract.org/2004/07/EOApprovalProcess.Core.Server.Wcf.Models\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n"
-			+ "\r\n" + "        <a:Routing>\r\n" + "\r\n"
-			+ "          <a:ApprovalDate>2013-07-01T15:04:00</a:ApprovalDate>\r\n" + "\r\n"
-			+ "          <a:ApproverName>Singla, Puneet</a:ApproverName>\r\n" + "\r\n"
-			+ "          <a:Authority>Materials Support Supervisor</a:Authority>\r\n" + "\r\n" + "          <a:Key>\r\n"
-			+ "\r\n" + "            <a:ControlNumber>TEST127</a:ControlNumber>\r\n" + "\r\n" + "          </a:Key>\r\n"
-			+ "\r\n" + "        </a:Routing>\r\n" + "\r\n" + "        <a:Routing>\r\n" + "\r\n"
-			+ "          <a:ApprovalDate>2013-07-01T15:04:00</a:ApprovalDate>\r\n" + "\r\n"
-			+ "          <a:ApproverName>Singla, Puneet</a:ApproverName>\r\n" + "\r\n"
-			+ "          <a:Authority>Division Materials Manager</a:Authority>\r\n" + "\r\n" + "          <a:Key>\r\n"
-			+ "\r\n" + "            <a:ControlNumber>TEST127</a:ControlNumber>\r\n" + "\r\n" + "          </a:Key>\r\n"
-			+ "\r\n" + "        </a:Routing>\r\n" + "\r\n" + "        <a:Routing>\r\n" + "\r\n"
-			+ "          <a:ApprovalDate>2013-07-01T15:05:00</a:ApprovalDate>\r\n" + "\r\n"
-			+ "          <a:ApproverName>Singla, Puneet</a:ApproverName>\r\n" + "\r\n"
-			+ "          <a:Authority>Controller</a:Authority>\r\n" + "\r\n" + "          <a:Key>\r\n" + "\r\n"
-			+ "            <a:ControlNumber>TEST127</a:ControlNumber>\r\n" + "\r\n" + "          </a:Key>\r\n" + "\r\n"
-			+ "        </a:Routing>\r\n" + "\r\n" + "        <a:Routing>\r\n" + "\r\n"
-			+ "          <a:ApprovalDate>2013-07-01T15:05:00</a:ApprovalDate>\r\n" + "\r\n"
-			+ "          <a:ApproverName>Singla, Puneet</a:ApproverName>\r\n" + "\r\n"
-			+ "          <a:Authority>Plant/Facility Manager</a:Authority>\r\n" + "\r\n" + "          <a:Key>\r\n"
-			+ "\r\n" + "            <a:ControlNumber>TEST127</a:ControlNumber>\r\n" + "\r\n" + "          </a:Key>\r\n"
-			+ "\r\n" + "        </a:Routing>\r\n" + "\r\n" + "        <a:Routing>\r\n" + "\r\n"
-			+ "          <a:ApprovalDate>2013-07-15T15:22:00</a:ApprovalDate>\r\n" + "\r\n"
-			+ "          <a:ApproverName>Singla, Puneet</a:ApproverName>\r\n" + "\r\n"
-			+ "          <a:Authority>V.P. Manufacturing</a:Authority>\r\n" + "\r\n" + "          <a:Key>\r\n" + "\r\n"
-			+ "            <a:ControlNumber>TEST127</a:ControlNumber>\r\n" + "\r\n" + "          </a:Key>\r\n" + "\r\n"
-			+ "        </a:Routing>\r\n" + "\r\n" + "        <a:Routing>\r\n" + "\r\n"
-			+ "          <a:ApprovalDate>2013-07-15T15:22:00</a:ApprovalDate>\r\n" + "\r\n"
-			+ "          <a:ApproverName>Singla, Puneet</a:ApproverName>\r\n" + "\r\n"
-			+ "          <a:Authority>V.P. Finance</a:Authority>\r\n" + "\r\n" + "          <a:Key>\r\n" + "\r\n"
-			+ "            <a:ControlNumber>TEST127</a:ControlNumber>\r\n" + "\r\n" + "          </a:Key>\r\n" + "\r\n"
-			+ "        </a:Routing>\r\n" + "\r\n" + "      </GetRoutingsResult>\r\n" + "\r\n"
-			+ "    </GetRoutingsResponse>\r\n" + "\r\n" + "  </s:Body>\r\n" + "\r\n" + "</s:Envelope>";
-
 	/**
 	 * Get Parts Service
 	 * 
@@ -261,14 +224,6 @@ public class ResponseToDomain {
 	}
 
 	public static void main(String[] args) {
-		ResponseToDomain responseToDomain = new ResponseToDomain();
-		List<EOAPPRVL> responseToEOCOMMENT = responseToDomain.responseToEOAPPRVL(response);
-		for (EOAPPRVL eocoment : responseToEOCOMMENT) {
-			logger.info("getEOAUTH : " + eocoment.getEOAUTH());
-			logger.info("getEODATE : " + eocoment.getEODATE());
-			logger.info("getEONAME : " + eocoment.getEONAME());
-			logger.info("getEONUM : " + eocoment.getEONUM());
-		}
 	}
 
 }
