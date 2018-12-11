@@ -1,28 +1,23 @@
 package com.evoke.core.utils;
 
-import java.io.StringReader;
-import java.io.StringWriter;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.soap.MessageFactory;
+import javax.xml.soap.SOAPMessage;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamReader;
-import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.TransformerFactoryConfigurationError;
-import javax.xml.transform.stax.StAXSource;
-import javax.xml.transform.stream.StreamResult;
 
 import org.apache.log4j.Logger;
 
-import com.evoke.model.EOCOMENT;
-import com.evoke.model.EOPARTF;
 import com.evoke.core.bean.EOAPPRVLBean;
 import com.evoke.core.bean.EOAPPRVLParentBean;
 import com.evoke.core.bean.EOCOMMENTBean;
@@ -30,6 +25,8 @@ import com.evoke.core.bean.EOCOMMENTParentBean;
 import com.evoke.core.bean.EOPARTFBean;
 import com.evoke.core.bean.EOPARTFParentBean;
 import com.evoke.model.EOAPPRVL;
+import com.evoke.model.EOCOMENT;
+import com.evoke.model.EOPARTF;
 
 public class ResponseToDomain {
 
@@ -133,11 +130,24 @@ public class ResponseToDomain {
 	private EOAPPRVLParentBean responseStringToEOAPPRVL(String response, XMLInputFactory xif)
 			throws XMLStreamException, TransformerConfigurationException, TransformerFactoryConfigurationError,
 			TransformerException, JAXBException {
-		StringReader sr = responseTransformation(response, xif);
-		JAXBContext jaxbContext = JAXBContext.newInstance(EOAPPRVLParentBean.class);
-		Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-		// converting soap response to EOPARTFParentBean objecteoPARTFParentBean
-		EOAPPRVLParentBean eoAPPRVLParentBean = (EOAPPRVLParentBean) unmarshaller.unmarshal(sr);
+		
+		SOAPMessage message =  null;
+		EOAPPRVLParentBean eoAPPRVLParentBean = new EOAPPRVLParentBean();
+		try {
+			 message = MessageFactory.newInstance().createMessage(null,
+			        new ByteArrayInputStream(response.getBytes()));
+			 
+			 JAXBContext jaxbContext = JAXBContext.newInstance(EOAPPRVLParentBean.class);
+				Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+				// converting soap response to EOPARTFParentBean objecteoPARTFParentBean
+				eoAPPRVLParentBean = (EOAPPRVLParentBean) unmarshaller.unmarshal(message.getSOAPBody().extractContentAsDocument().getFirstChild().getFirstChild());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return eoAPPRVLParentBean;
 	}
@@ -160,11 +170,25 @@ public class ResponseToDomain {
 	private EOPARTFParentBean responseStringToEOPARTFBean(String response, XMLInputFactory xif)
 			throws XMLStreamException, TransformerConfigurationException, TransformerFactoryConfigurationError,
 			TransformerException, JAXBException {
-		StringReader sr = responseTransformation(response, xif);
-		JAXBContext jaxbContext = JAXBContext.newInstance(EOPARTFParentBean.class);
-		Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-		// converting soap response to EOPARTFParentBean objecteoPARTFParentBean
-		EOPARTFParentBean eoPARTFParentBean = (EOPARTFParentBean) unmarshaller.unmarshal(sr);
+		//StringReader sr = responseTransformation(response, xif);
+		SOAPMessage message =  null;
+		EOPARTFParentBean eoPARTFParentBean = new EOPARTFParentBean();
+		try {
+			 message = MessageFactory.newInstance().createMessage(null,
+			        new ByteArrayInputStream(response.getBytes()));
+			 
+			 JAXBContext jaxbContext = JAXBContext.newInstance(EOPARTFParentBean.class);
+				Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+				// converting soap response to EOPARTFParentBean objecteoPARTFParentBean
+				 eoPARTFParentBean = (EOPARTFParentBean) unmarshaller.unmarshal(message.getSOAPBody().extractContentAsDocument().getFirstChild().getFirstChild());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 
 		return eoPARTFParentBean;
 	}
@@ -172,33 +196,55 @@ public class ResponseToDomain {
 	private EOCOMMENTParentBean responseStringToEOCOMENTBean(String response, XMLInputFactory xif)
 			throws XMLStreamException, TransformerConfigurationException, TransformerFactoryConfigurationError,
 			TransformerException, JAXBException {
-		StringReader sr = responseTransformation(response, xif);
-		JAXBContext jaxbContext = JAXBContext.newInstance(EOCOMMENTParentBean.class);
-		Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-		// converting soap response to EOPARTFParentBean objecteoPARTFParentBean
-		EOCOMMENTParentBean eoCOMMENTParentBean = (EOCOMMENTParentBean) unmarshaller.unmarshal(sr);
+		SOAPMessage message =  null;
+		EOCOMMENTParentBean eoCOMMENTParentBean = new EOCOMMENTParentBean();
+		try {
+			 message = MessageFactory.newInstance().createMessage(null,
+			        new ByteArrayInputStream(response.getBytes()));
+			 
+			 JAXBContext jaxbContext = JAXBContext.newInstance(EOCOMMENTParentBean.class);
+				Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+				// converting soap response to EOPARTFParentBean objecteoPARTFParentBean
+				eoCOMMENTParentBean = (EOCOMMENTParentBean) unmarshaller.unmarshal(message.getSOAPBody().extractContentAsDocument().getFirstChild().getFirstChild());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return eoCOMMENTParentBean;
 	}
 
-	private StringReader responseTransformation(String response, XMLInputFactory xif) throws XMLStreamException,
+	/*private StringReader responseTransformation(String response, XMLInputFactory xif) throws XMLStreamException,
 			TransformerConfigurationException, TransformerFactoryConfigurationError, TransformerException {
 		XMLStreamReader xsr = xif.createXMLStreamReader(new StringReader(response));
 		xsr.nextTag(); // Advance to Envelope tag
 		xsr.nextTag(); // Advance to Header tag
 		xsr.nextTag(); // Advance to Body tag
 		xsr.nextTag(); // Advance to GetPartsResponse tag
-		xsr.nextTag(); // Advance to GetPartsResult tag
-		xsr.nextTag();
-
+		//xsr.nextTag(); // Advance to GetPartsResult tag
+		//xsr.nextTag();
+		
+		try {
+			SOAPMessage message = MessageFactory.newInstance().createMessage(null,
+			        new ByteArrayInputStream(response.getBytes()));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SOAPException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		Transformer transformer = TransformerFactory.newInstance().newTransformer();
 		StringWriter stringWriter = new StringWriter();
 		transformer.transform(new StAXSource(xsr), new StreamResult(stringWriter));
 		StringReader sr = new StringReader(stringWriter.toString());
 
 		return sr;
-	}
-
+	}*/
+	
 	private void eoPARTFBeanToDomain(List<EOPARTF> eoPARTFList, List<EOPARTFBean> eoPARTFBeanList) {
 		if (eoPARTFBeanList != null && eoPARTFBeanList.size() > 0) {
 			logger.info("EOPARTFBeanList : " + eoPARTFBeanList.size());
@@ -224,6 +270,11 @@ public class ResponseToDomain {
 	}
 
 	public static void main(String[] args) {
+
+        String resp = "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\"><s:Body><GetPartsResponse xmlns=\"http://tempuri.org/\"><GetPartsResult xmlns:a=\"http://schemas.datacontract.org/2004/07/EOApprovalProcess.Core.Server.Wcf.Models\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><a:Part><a:Comment>Excess parts with extended value &lt;= $1000. No usage in past two years.</a:Comment><a:Key><a:ControlNumber>GS 2-21-2013</a:ControlNumber></a:Key><a:MaterialPlanner>MP12</a:MaterialPlanner><a:OnHandQuantity>1</a:OnHandQuantity><a:PartDescription>OUTRIG ARM 4.5\"TK</a:PartDescription><a:PartNumber>752594605</a:PartNumber><a:ScrapQuantity>1</a:ScrapQuantity><a:ThrowAwayQuantity>1</a:ThrowAwayQuantity><a:TotalCost>1</a:TotalCost><a:UnitCost>1</a:UnitCost><a:Vendor>501114</a:Vendor><a:VendorName>RYERSON INC</a:VendorName></a:Part></GetPartsResult></GetPartsResponse></s:Body></s:Envelope>";
+
+         System.out.println("size "+new ResponseToDomain().responseToEOPARTF(resp).size());
+		
 	}
 
 }
