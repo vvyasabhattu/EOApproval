@@ -13,6 +13,7 @@
 		<jdk.version>1.7</jdk.version>
 		<junit.version>4.11</junit.version>
 		<log4j.version>1.2.17</log4j.version>
+		<slf4jVersion>1.6.1</slf4jVersion>
 	</properties>
 
 	<dependencies>
@@ -23,10 +24,16 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
+		<!-- <dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>${log4j.version}</version>
+		</dependency> -->
+		
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4jVersion}</version>
 		</dependency>
 
 		<dependency>
@@ -35,7 +42,7 @@
 			<version>2.53.1</version>
 			<scope>system</scope>
 			<systemPath>
- 		  C:\Users\gpamu\Downloads\bdm-client-pojo (1).jar
+ 		  		C:\Eclipse\workspaces\bdm-client-pojo.jar
     		</systemPath>
 		</dependency>
 

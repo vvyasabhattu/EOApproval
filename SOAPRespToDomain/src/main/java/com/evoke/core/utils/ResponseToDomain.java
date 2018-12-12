@@ -16,7 +16,8 @@ import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactoryConfigurationError;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.evoke.core.bean.EOAPPRVLBean;
 import com.evoke.core.bean.EOAPPRVLParentBean;
@@ -30,7 +31,7 @@ import com.evoke.model.EOPARTF;
 
 public class ResponseToDomain {
 
-	private static final Logger logger = Logger.getLogger(ResponseToDomain.class);
+	private static final Logger logger = LoggerFactory.getLogger(ResponseToDomain.class);
 
 	/**
 	 * Get Parts Service
@@ -270,11 +271,8 @@ public class ResponseToDomain {
 	}
 
 	public static void main(String[] args) {
-
-        String resp = "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\"><s:Body><GetPartsResponse xmlns=\"http://tempuri.org/\"><GetPartsResult xmlns:a=\"http://schemas.datacontract.org/2004/07/EOApprovalProcess.Core.Server.Wcf.Models\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><a:Part><a:Comment>Excess parts with extended value &lt;= $1000. No usage in past two years.</a:Comment><a:Key><a:ControlNumber>GS 2-21-2013</a:ControlNumber></a:Key><a:MaterialPlanner>MP12</a:MaterialPlanner><a:OnHandQuantity>1</a:OnHandQuantity><a:PartDescription>OUTRIG ARM 4.5\"TK</a:PartDescription><a:PartNumber>752594605</a:PartNumber><a:ScrapQuantity>1</a:ScrapQuantity><a:ThrowAwayQuantity>1</a:ThrowAwayQuantity><a:TotalCost>1</a:TotalCost><a:UnitCost>1</a:UnitCost><a:Vendor>501114</a:Vendor><a:VendorName>RYERSON INC</a:VendorName></a:Part></GetPartsResult></GetPartsResponse></s:Body></s:Envelope>";
-
-         System.out.println("size "+new ResponseToDomain().responseToEOPARTF(resp).size());
-		
+		String resp = "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\"><s:Body><GetPartsResponse xmlns=\"http://tempuri.org/\"><GetPartsResult xmlns:a=\"http://schemas.datacontract.org/2004/07/EOApprovalProcess.Core.Server.Wcf.Models\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><a:Part><a:Comment>Excess parts with extended value &lt;= $1000. No usage in past two years.</a:Comment><a:Key><a:ControlNumber>GS 2-21-2013</a:ControlNumber></a:Key><a:MaterialPlanner>MP12</a:MaterialPlanner><a:OnHandQuantity>1</a:OnHandQuantity><a:PartDescription>OUTRIG ARM 4.5\"TK</a:PartDescription><a:PartNumber>752594605</a:PartNumber><a:ScrapQuantity>1</a:ScrapQuantity><a:ThrowAwayQuantity>1</a:ThrowAwayQuantity><a:TotalCost>1</a:TotalCost><a:UnitCost>1</a:UnitCost><a:Vendor>501114</a:Vendor><a:VendorName>RYERSON INC</a:VendorName></a:Part></GetPartsResult></GetPartsResponse></s:Body></s:Envelope>";
+        System.out.println("size "+new ResponseToDomain().responseToEOPARTF(resp).size());		
 	}
 
 }
