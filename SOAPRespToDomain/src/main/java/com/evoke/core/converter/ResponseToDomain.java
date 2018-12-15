@@ -1,4 +1,4 @@
-package com.evoke.core.utils;
+package com.evoke.core.converter;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
