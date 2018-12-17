@@ -258,7 +258,7 @@ public class ResponseToDomain {
 		xsr.nextTag(); // Advance to Header tag
 		xsr.nextTag(); // Advance to Body tag
 		xsr.nextTag(); // Advance to
-		if (response.contains("<s:Header />")) {
+		if (response.contains("s:Header")) {
 			xsr.nextTag(); // Advance to GetPartsResult tag
 			xsr.nextTag();
 		}
@@ -356,7 +356,7 @@ public class ResponseToDomain {
 		String resp = "\r\n" + 
 				"<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n" + 
 				"\r\n" + 
-				"  <s:Header />\r\n" + 
+			
 				"\r\n" + 
 				"  <s:Body>\r\n" + 
 				"\r\n" + 
