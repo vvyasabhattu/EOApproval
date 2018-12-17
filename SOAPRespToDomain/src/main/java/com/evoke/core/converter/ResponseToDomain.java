@@ -4,18 +4,22 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
+
 import javax.xml.soap.MessageFactory;
 import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPMessage;
+
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
+
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -26,12 +30,7 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
-import com.company.model.EOHEADER;
 import com.evoke.core.bean.EOAPPRVLBean;
 import com.evoke.core.bean.EOAPPRVLParentBean;
 import com.evoke.core.bean.EOCOMMENTBean;
@@ -39,8 +38,10 @@ import com.evoke.core.bean.EOCOMMENTParentBean;
 import com.evoke.core.bean.EOHEADERBean;
 import com.evoke.core.bean.EOPARTFBean;
 import com.evoke.core.bean.EOPARTFParentBean;
+
 import com.evoke.model.EOAPPRVL;
 import com.evoke.model.EOCOMENT;
+import com.evoke.model.EOHEADER;
 import com.evoke.model.EOPARTF;
 
 public class ResponseToDomain {
