@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "Parts", namespace = "http://schemas.datacontract.org/2004/07/EOApprovalProcess.Core.Server.Wcf.Models")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class EOPARTFAllBean {
+public class EOPARTFBeans {
 	
 	@XmlElement(name = "Part", namespace = "http://schemas.datacontract.org/2004/07/EOApprovalProcess.Core.Server.Wcf.Models")
 	private List<EOPARTFBean> eoPARTFBean;

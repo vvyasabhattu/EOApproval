@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "Routings", namespace = "http://schemas.datacontract.org/2004/07/EOApprovalProcess.Core.Server.Wcf.Models")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class EOAPPRVLAllBean {
+public class EOAPPRVLBeans {
 
 	@XmlElement(name = "Routing", namespace = "http://schemas.datacontract.org/2004/07/EOApprovalProcess.Core.Server.Wcf.Models")
 	private List<EOAPPRVLBean> eoAPPRVLBean;

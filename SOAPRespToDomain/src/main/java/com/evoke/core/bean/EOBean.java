@@ -1,8 +1,6 @@
 package com.evoke.core.bean;
 
 
-import java.util.List;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -13,32 +11,32 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class EOBean {
 	
 	@XmlElement(name = "Comments", namespace = "http://schemas.datacontract.org/2004/07/EOApprovalProcess.Core.Server.Wcf.Models")
-	private EOCOMMENTAllBean eoComments;
+	private EOCOMMENTBeans eoComments;
 	
 	@XmlElement(name = "Header", namespace = "http://schemas.datacontract.org/2004/07/EOApprovalProcess.Core.Server.Wcf.Models")
 	private EOHEADERBean eoHEADER;
 	
 	
 	@XmlElement(name = "Parts", namespace = "http://schemas.datacontract.org/2004/07/EOApprovalProcess.Core.Server.Wcf.Models")
-	private EOPARTFAllBean eoPARTF;
+	private EOPARTFBeans eoPARTF;
 	
 	@XmlElement(name = "Routings", namespace = "http://schemas.datacontract.org/2004/07/EOApprovalProcess.Core.Server.Wcf.Models")
-	private EOAPPRVLAllBean eoRouting;
+	private EOAPPRVLBeans eoRouting;
 	
 
-	public EOPARTFAllBean getEPARTF() {
+	public EOPARTFBeans getEPARTF() {
 		return eoPARTF;
 	}
 
-	public EOAPPRVLAllBean getEoRouting() {
+	public EOAPPRVLBeans getEoRouting() {
 		return eoRouting;
 	}
 
-	public void setEoRouting(EOAPPRVLAllBean eoRouting) {
+	public void setEoRouting(EOAPPRVLBeans eoRouting) {
 		this.eoRouting = eoRouting;
 	}
 
-	public void setEPARTF(EOPARTFAllBean eoPartList) {
+	public void setEPARTF(EOPARTFBeans eoPartList) {
 		this.eoPARTF = eoPartList;
 	}
 
@@ -50,11 +48,11 @@ public class EOBean {
 		this.eoHEADER = eoHEADER;
 	}
 
-	public EOCOMMENTAllBean getEoComments() {
+	public EOCOMMENTBeans getEoComments() {
 		return eoComments;
 	}
 
-	public void setEoComments(EOCOMMENTAllBean eoComments) {
+	public void setEoComments(EOCOMMENTBeans eoComments) {
 		this.eoComments = eoComments;
 	}
 	
