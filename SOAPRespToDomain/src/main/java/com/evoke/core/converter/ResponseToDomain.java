@@ -39,10 +39,11 @@ import com.evoke.core.bean.EOPARTFParentBean;
 import com.evoke.core.bean.UserBean;
 import com.evoke.core.bean.UserGroupBean;
 import com.evoke.core.bean.UserParentBean;
-import com.evoke.model.EOAPPRVL;
-import com.evoke.model.EOCOMENT;
-import com.evoke.model.EOHEADER;
-import com.evoke.model.EOPARTF;
+
+import com.hysteryale.model.EOAPPRVL;
+import com.hysteryale.model.EOCOMENT;
+import com.hysteryale.model.EOHEADER;
+import com.hysteryale.model.EOPARTF;
 
 public class ResponseToDomain {
 
@@ -81,51 +82,42 @@ public class ResponseToDomain {
 	 * @param response
 	 * @return
 	 */
-	public List<UserGroupBean> responseToUserBean(String response) {
-
+	public Map<String, List<UserBean>> responseToUserBean(String response) {
+		
 		List<UserGroupBean> userGroupList = new ArrayList<UserGroupBean>();
 		XMLInputFactory xif = XMLInputFactory.newFactory();
+		Map<String, List<UserBean>> usersMap = new HashMap<String, List<UserBean>>();
 
 		try {
 			// converting response string to EOPARTFParentBean
-			UserParentBean userParentBean = responseStringToUserGroupList(response, xif);
+			UserParentBean userParentBean = responseStringToUserGroupList(response, xif);			
 			if (userParentBean != null) {
 				List<UserGroupBean> eoPARTFBeanList = userParentBean.getGroup();
-				// converting EOPARTFBean to EOPARTF object
-				//eoPARTFBeanToDomain(eoPARTFList, eoPARTFBeanList);
+				
 				if(eoPARTFBeanList != null && eoPARTFBeanList.size() > 0) {
-					for (UserGroupBean userGroupBean : eoPARTFBeanList) {
-						logger.info("userGroupBean --getKey-->"+userGroupBean.getKey().getName());
-						logger.info("userGroupBean -size--->"+userGroupBean.getUsersBean().getUserBeanList().size());
-						
+					for (UserGroupBean userGroupBean : eoPARTFBeanList) {						
 						List<UserBean> userBeanList = userGroupBean.getUsersBean().getUserBeanList();
-						
-						if(userBeanList != null && userBeanList.size() > 0) {
-							for (UserBean userBean : userBeanList) {
-								logger.info("userGroupBean -getDomain--->"+userBean.getDomain());
-								logger.info("userGroupBean -employeeNumber--->"+userBean.getKey().getEmployeeNumber());
-								
-								//System.out.println("userGroupBean -getDomain--->"+userBean.getDomain());
-								//System.out.println("userGroupBean -employeeNumber--->"+userBean.getKey().getEmployeeNumber());
+						usersMap.put(userGroupBean.getKey().getName(), userBeanList);
+						/*if(userBeanList != null && userBeanList.size() > 0) {
+							for (UserBean userBean : userBeanList) {								
+								System.out.println("userGroupBean -getDomain--->"+userBean.getDomain());
+								System.out.println("userGroupBean -employeeNumber--->"+userBean.getKey().getEmployeeNumber());
 							}
-						}
-						
+						}*/
 					}
 				}
 			}
-			return userGroupList;
+			return usersMap;
 		} catch (Exception e) {
 			logger.info("Exception at responseToEOPARTF method : " + e);
-			return userGroupList;
+			return usersMap;
 		}
 	}
-	
 	
 	private UserParentBean responseStringToUserGroupList(String response, XMLInputFactory xif)
 			throws XMLStreamException, TransformerConfigurationException, TransformerFactoryConfigurationError,
 			TransformerException, JAXBException {
-		// StringReader sr = responseTransformation(response, xif);
-		SOAPMessage message = null;
+		// StringReader sr = responseTransformation(response, xif);		
 		UserParentBean userParentBean = new UserParentBean();
 		XMLStreamReader xsr = xif.createXMLStreamReader(new StringReader(response));
 		xsr.nextTag();
