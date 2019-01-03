@@ -84,7 +84,6 @@ public class ResponseToDomain {
 	 */
 	public Map<String, List<UserBean>> responseToUserBean(String response) {
 		
-		List<UserGroupBean> userGroupList = new ArrayList<UserGroupBean>();
 		XMLInputFactory xif = XMLInputFactory.newFactory();
 		Map<String, List<UserBean>> usersMap = new HashMap<String, List<UserBean>>();
 
