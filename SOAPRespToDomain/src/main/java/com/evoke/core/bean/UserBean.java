@@ -44,6 +44,26 @@ public class UserBean {
 	
 	@XmlElement(name = "Key", namespace = "http://schemas.datacontract.org/2004/07/FauxActiveDirectory.Server.Wcf.Models")
 	private UserKey key;
+	
+	private String employeeNumber;
+	
+	private String groupName;
+
+	public String getEmployeeNumber() {
+		return employeeNumber;
+	}
+
+	public void setEmployeeNumber(String employeeNumber) {
+		this.employeeNumber = employeeNumber;
+	}
+
+	public String getGroupName() {
+		return groupName;
+	}
+
+	public void setGroupName(String groupName) {
+		this.groupName = groupName;
+	}
 
 	public UserKey getKey() {
 		return key;
