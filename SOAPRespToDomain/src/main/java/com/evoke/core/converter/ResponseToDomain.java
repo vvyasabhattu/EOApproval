@@ -86,7 +86,7 @@ public class ResponseToDomain {
 		XMLInputFactory xif = XMLInputFactory.newFactory();
 		Map<String, List<UserBean>> usersMap = new HashMap<String, List<UserBean>>();
 		
-		List<UserBean> usersList = new ArrayList<UserBean>();
+		//List<UserBean> usersList = new ArrayList<UserBean>();
 
 		try {
 			// converting response string to EOPARTFParentBean
@@ -97,18 +97,18 @@ public class ResponseToDomain {
 				if(eoPARTFBeanList != null && eoPARTFBeanList.size() > 0) {
 					for (UserGroupBean userGroupBean : eoPARTFBeanList) {
 						List<UserBean> userBeanList = userGroupBean.getUsersBean().getUserBeanList();
-						//usersMap.put(userGroupBean.getKey().getName(), userBeanList);						
-						if(userBeanList != null && userBeanList.size() > 0) {
+						usersMap.put(userGroupBean.getKey().getName(), userBeanList);						
+						/*if(userBeanList != null && userBeanList.size() > 0) {
 							for (UserBean userBean : userBeanList) {
 								userBean.setGroupName(userGroupBean.getKey().getName());
 								userBean.setEmployeeNumber(userBean.getKey().getEmployeeNumber());
 								usersList.add(userBean);
 							}
-						}
+						}*/
 					}
 				}
 			}
-			usersMap.put("users", usersList);
+			//usersMap.put("users", usersList);
 			return usersMap;
 		} catch (Exception e) {
 			logger.info("Exception at responseToEOPARTF method : " + e);
